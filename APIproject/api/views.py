@@ -15,6 +15,15 @@ from django.shortcuts import get_object_or_404
 # Create your views here.
 
 
+class ArticleViewSet(viewsets.GenericViewSet, mixins.ListModelMixin,
+                     mixins.CreateModelMixin, mixins.RetrieveModelMixin,
+                     mixins.UpdateModelMixin, mixins.DestroyModelMixin):
+    queryset = Article.objects.all()
+    serializer_class = ArticleSerializer
+
+
+
+'''
 class ArticleViewSet(viewsets.ViewSet):
 
     def list(self, request):
@@ -50,7 +59,7 @@ class ArticleViewSet(viewsets.ViewSet):
         return Response(status=status.HTTP_204_NO_CONTENT)
 
 
-
+'''
 
 '''
 class ArticleList(generics.GenericAPIView, mixins.ListModelMixin,
